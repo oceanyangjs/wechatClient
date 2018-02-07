@@ -1,0 +1,30 @@
+<!--pages/list/list.wxml-->
+<!-- <text>pages/list/list.wxml</text> -->
+
+<view class="container">
+  <view class="widget">
+    <text class="column">ID</text>
+    <text class="columnname">歌词</text>
+    <text class="column">顺序</text>
+    <text class="link-column">操作</text>
+  </view>
+  <scroll-view scroll-y="true">
+    <view>
+      <block wx:for="{{list}}">
+        <view class="widget">
+          <text class="column">{{item.areaId}}</text>
+          <text class="columnname">{{item.areaName}}</text>
+          <text class="column">{{item.priority}}</text>
+          <view class="link-column">
+            <navigator class="link" url="../operation/operation?areaId={{item.areaId}}">编辑
+            </navigator>|
+            <navigator class="link" bindtap="deleteArea" data-areaId="{{item.areaId}}" data-name="{{item.areaName}}" data-index="{{index}}">删除
+            </navigator>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+  <button type='primary' bindtap="addArea">添加歌词信息
+  </button>
+</view>
